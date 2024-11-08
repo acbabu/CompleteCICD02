@@ -35,6 +35,8 @@ sonarcloud-check:
   only:
     - merge_requests
     - main
+  tags:
+    - GitLab_EC2_Runner
 
 docker_build_job:
   stage: docker_build
@@ -42,5 +44,6 @@ docker_build_job:
     - docker build -t repo-name:$CI_COMMIT_SHA .
   only:
     - main
-
+  tags:
+    - GitLab_EC2_Runner
 
