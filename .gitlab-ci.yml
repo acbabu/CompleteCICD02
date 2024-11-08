@@ -9,6 +9,6 @@ build_job:
   tags: 
     - GitLab_EC2_Runner
   script:
-    - sudo apt install nodejs
-    - sudo apt install npm 
+    - sudo apt install nodejs -y
+    - sudo apt install npm -y
     - npm install
