@@ -72,7 +72,7 @@ deploy_image_to_ECS:
   stage: deploy_to_Amazon_ECS
   script: 
     - echo "Deploying to AWS ECS"
-    - aws ecs update-service --cluster iquant-ecs --service iquant-ecs-svc --force-new-deployment --region $AWS_DEFAULT_REGION
+    - aws ecs update-service --cluster iquant-ecs --service iquant-ecs-svc --force-new-deployment --region us-east-1
   only:
     - main
   tags:
