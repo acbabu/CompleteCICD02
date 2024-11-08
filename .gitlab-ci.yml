@@ -2,6 +2,8 @@
 stages:
   - install_npm_dependencies
   - sonarcloud_analysis
+  - docker_build
+
 
 variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  
@@ -33,4 +35,13 @@ sonarcloud-check:
   only:
     - merge_requests
     - main
+
+docker_build_job:
+  stage: docker_build
+  script: 
+    - docker build -t repo-name:$CI_COMMIT_SHA .
+
+
+
+
 
