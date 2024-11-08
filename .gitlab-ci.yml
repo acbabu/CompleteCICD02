@@ -2,6 +2,7 @@ stages:
   - install_npm_dependencies
   - sonarcloud_analysis
   - docker_build
+  - trivy_scan
       
 variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  
@@ -40,4 +41,13 @@ docker_build_job:
     - main
   tags:
     - GitLab_EC2_Runner
+
+image_scan_job:
+  stage: trivy_scan
+  script: 
+    - docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:latest image repo-name:$CI_COMMIT_SHA
+  tags:
+    - GitLab_EC2_Runner
+
+
 
