@@ -50,4 +50,3 @@ image_scan_job:
   tags:
     - GitLab_EC2_Runner
 
-
