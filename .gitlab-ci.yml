@@ -4,6 +4,7 @@ stages:
   - docker_build
   - trivy_scan
   - push_to_Amazon_ECR
+  - deploy_to_Amazon_ECS
       
 variables:
   SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  
@@ -66,5 +67,16 @@ push_image_to_ECR:
     - main
   tags:
     - GitLab_EC2_Runner
+
+deploy_image_to_ECS:
+  stage: deploy_to_Amazon_ECS
+  script: 
+    - echo "Deploying to AWS ECS"
+    - aws ecs update-service --cluster iquant-ecs --service iquant-ecs-svc --force-new-deployment --region $AWS_REGION
+ only:
+    - main
+  tags:
+    - GitLab_EC2_Runner
+
 
 
