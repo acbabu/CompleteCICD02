@@ -35,8 +35,6 @@ sonarcloud-check:
   only:
     - merge_requests
     - main
-  tags:
-    - GitLab_EC2_Runner
 
 docker_build_job:
   stage: docker_build
