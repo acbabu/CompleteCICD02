@@ -8,5 +8,7 @@ build_job:
   stage: install_npm_dependencies
   tags: 
     - GitLab_EC2_Runner
-  script: 
+  script:
+    - sudo apt install nodejs
+    - sudo apt install npm 
     - npm install
