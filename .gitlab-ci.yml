@@ -51,4 +51,3 @@ image_scan_job:
     - GitLab_EC2_Runner
 
 
-
