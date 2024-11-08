@@ -1,4 +1,4 @@
-  
+   
 stages:
   - install_npm_dependencies
 
