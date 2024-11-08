@@ -73,10 +73,9 @@ deploy_image_to_ECS:
   script: 
     - echo "Deploying to AWS ECS"
     - aws ecs update-service --cluster iquant-ecs --service iquant-ecs-svc --force-new-deployment --region $AWS_REGION
- only:
+  only:
     - main
   tags:
     - GitLab_EC2_Runner
-
 
 
