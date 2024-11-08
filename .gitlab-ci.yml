@@ -47,6 +47,8 @@ image_scan_job:
   stage: trivy_scan
   script: 
     - docker run -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:0.57.0 image repo-name:$CI_COMMIT_SHA
+  only:
+    - main
   tags:
     - GitLab_EC2_Runner
 
