@@ -46,8 +46,13 @@ docker_build_job:
 
 trivy_scan_job:
   stage: scan_image
+  variables:
+    TRIVY_CACHE_DIR: ".trivycache/"
   script: 
     - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image repo-name:$CI_COMMIT_SHA
+  cache:
+    paths:
+      - .trivycache/
   tags:
     - GitLab_EC2_Runner
 
